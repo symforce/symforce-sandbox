@@ -1,16 +1,16 @@
 
 parameters:
-    mopa_bootstrap.form.templating: "AppAdminBundle:Form:fields.html.twig"
-    app_routing.default_template: "AppWebBundle::page_entity.html.twig"
+    mopa_bootstrap.form.templating: "SymforceAdminBundle:Form:fields.html.twig"
+    sf_routing.default_template: "AppWebBundle::page_entity.html.twig"
 
-app_admin:
+sf_admin:
     language:
         en: English
         zh_CN: 简体中文
 
     form:
         type:
-            authorize: App\UserBundle\Form\MetaType\AuthorizeMetaType
+            authorize: Symforce\UserBundle\Form\MetaType\AuthorizeMetaType
 
     admin:
         menu:

@@ -34,9 +34,10 @@ class AppKernel extends Kernel
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle() ,
-            new App\UserBundle\AppUserBundle() ,
-            new App\AdminBundle\AppAdminBundle() ,
-            new App\WebBundle\AppWebBundle() ,
+			
+            new Symforce\UserBundle\SymforceUserBundle() ,
+            new Symforce\AdminBundle\SymforceAdminBundle() , 
+			
         );
         
         $env    = $this->getEnvironment() ;

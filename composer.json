@@ -5,7 +5,7 @@
     "description": "The Symforce Sandbox" ,
     "autoload": {
         "psr-0": {
-            "AppAdminCache": "app/Resources/AppAdminBundle/src/" ,
+            "SymforceAdminCache": "app/Resources/SymforceAdminBundle/src/" ,
             "": "src/"
         }
     },
@@ -100,7 +100,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "App\\AdminBundle\\DependencyInjection\\Composer\\Script::Install"
+            "Symforce\\AdminBundle\\DependencyInjection\\Composer\\Script::Install"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -108,7 +108,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "App\\AdminBundle\\DependencyInjection\\Composer\\Script::Install"
+            "Symforce\\AdminBundle\\DependencyInjection\\Composer\\Script::Install"
         ]
     },
     "config": {

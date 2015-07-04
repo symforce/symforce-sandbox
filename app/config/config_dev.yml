@@ -1,6 +1,6 @@
 imports:
     - { resource: config.yml }
-    - { resource: app/config_dev.yml }
+    - { resource: symforce/config_dev.yml }
 
 framework:
     router:

@@ -1,5 +1,0 @@
-
-fos_message:
-    db_driver:              orm
-    thread_class:           App\UserBundle\Entity\MessageThread
-    message_class:          App\UserBundle\Entity\Message

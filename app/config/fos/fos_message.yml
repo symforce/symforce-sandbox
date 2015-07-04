@@ -1,0 +1,5 @@
+
+fos_message:
+    db_driver:              orm
+    thread_class:           Symforce\UserBundle\Entity\MessageThread
+    message_class:          Symforce\UserBundle\Entity\Message

@@ -8,8 +8,8 @@
 		'env:' ,
 		'user::' , 
 		'group::' ,
-		'app' ,
-                'assetic' ,
+		'admin' ,
+        'assetic' ,
 		'version' ,
 	);
 	$options = getopt('e:u::g::x::v::a', $longopts);
@@ -33,7 +33,7 @@
              foreach($files as $file ) {
                  if( file_exists($file) ) {
                     $data  = file_get_contents($file) ;
-                    preg_match('/web_app_' . $match . ':\s*(.+)\s/', $data, $ls);
+                    preg_match('/sf\.web_' . $match . ':\s*(.+)\s/', $data, $ls);
                     if( $ls && isset($ls[1]) ) {
                         $var    =  $ls[1] ;
                         break ;
@@ -49,7 +49,7 @@
 	$env	= $getarg('e', 'env', 'dev', '/^(prod|dev|test)$/',  'env:`%s` must be one of (dev, prod, test)' );
 	$user   = $getarg('u', 'user', $web_user , '/^[\w\-\_]+$/',  'user:`%s` is valid' );
 	$group	= $getarg('g', 'group', $web_group, '/^[\w\-\_]+$/',  'group:`%s` is valid');
-	$app	= $getarg('x', 'app' );
+	$app	= $getarg('x', 'admin' );
         $assetic = $getarg('a', 'assetic' ) ;
 	$ver	= $getarg('v', 'version' );
         $is_dev = 'dev' === $env ;
@@ -75,7 +75,7 @@
         
         if( !$is_dev ) {
             $exec("rm -rf app/cache/$env/annotations app/cache/$env/assetic app/cache/$env/doctrine app/cache/$env/profiler app/cache/$env/translations app/cache/$env/twig") ;
-            $exec("rm -rf app/Resources/views/* app/Resources/AppAdminBundle/src/AppAdminCache/*") ;
+            $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminBundle/src/SymforceAdminCache/*") ;
         }
         
         if( $assetic || !$is_dev ) {

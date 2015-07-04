@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: app/config.yml }
+    - { resource: symforce/config.yml }
 
 framework:
     #esi:             ~
@@ -18,9 +18,9 @@ framework:
     templating:
         engines: ['twig']
     assets:
-        version: %app.version%
+        version: %sf.version%
         version_format: '%%s?version=%%s'
-        base_path: %app.web_assets_dir%
+        base_path: %sf.web_assets_dir%
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:         ~
@@ -31,14 +31,14 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     globals:
-        web_assets_dir: %app.web_assets_dir%
+        web_assets_dir: %sf.web_assets_dir%
     
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: %assetic.use_controller%
-    read_from:      %kernel.root_dir%/../web%app.web_assets_dir%
-    write_to:       %kernel.root_dir%/../web%app.web_assets_dir%
+    read_from:      %kernel.root_dir%/../web%sf.web_assets_dir%
+    write_to:       %kernel.root_dir%/../web%sf.web_assets_dir%
     bundles:        %assetic.bundles%
     java: %assetic.java_path%
     filters:
@@ -66,8 +66,8 @@ doctrine:
         password: %database_password%
         charset:  UTF8
         types:
-            uuid: App\AdminBundle\Doctrine\DBAL\Types\UuidType
-        # blob: App\AdminBundle\Doctrine\DBAL\Types\BlobType 
+            uuid: Symforce\AdminBundle\Doctrine\DBAL\Types\UuidType
+        # blob: Symforce\AdminBundle\Doctrine\DBAL\Types\BlobType 
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3
         # path:     %database_path%

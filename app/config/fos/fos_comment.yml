@@ -5,9 +5,9 @@ fos_comment:
     db_driver: orm
     class:
         model:
-            comment: App\UserBundle\Entity\Comment
-            thread: App\UserBundle\Entity\CommentThread
-            vote: App\UserBundle\Entity\CommentVote
+            comment: Symforce\UserBundle\Entity\Comment
+            thread: Symforce\UserBundle\Entity\CommentThread
+            vote: Symforce\UserBundle\Entity\CommentVote
     acl: true
     
     service:

@@ -1,8 +1,8 @@
 
-_app_user_fos:
-    resource: "@AppUserBundle/Resources/config/routing/fos.yml"
+_sf_user_fos:
+    resource: "@SymforceUserBundle/Resources/config/routing/fos.yml"
     
-#_app_group_fos:
+#_sf_group_fos:
 #    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
 #    prefix: /group 
 
@@ -12,8 +12,5 @@ _app_user_fos:
 #    prefix: /user/comment
 #    defaults: { _format: html }
     
-_app_admin:
-    resource: "@AppAdminBundle/Resources/config/routing.yml"
-
-_app_web:
-    resource: "@AppWebBundle/Resources/config/routing.yml"
+_sf_admin:
+    resource: "@SymforceAdminBundle/Resources/config/routing.yml"

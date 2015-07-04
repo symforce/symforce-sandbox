@@ -22,7 +22,7 @@ security:
 
     firewalls:
         dev:
-            pattern:  ^%app.web_assets_dir%/
+            pattern:  ^%sf.web_assets_dir%/
             security: false
 
         login:
@@ -33,9 +33,9 @@ security:
             pattern:    ^/admin/
             form_login:
                 # always_use_default_target_path: true
-                default_target_path: app_admin_dashboard
-                check_path: app_admin_check
-                login_path: app_admin_login
+                default_target_path: sf_admin_dashboard
+                check_path: sf_admin_check
+                login_path: sf_admin_login
                 username_parameter: login[username]
                 password_parameter: login[password]
                 csrf_parameter: login[_token]
@@ -49,8 +49,8 @@ security:
                 remember_me:    false
 
             logout:
-                path:   app_admin_logout
-                target: app_admin_dashboard
+                path:   sf_admin_logout
+                target: sf_admin_dashboard
 
         main:
             pattern: ^/
@@ -66,8 +66,8 @@ security:
                 failure_path:   null
                 post_only:      true
                 remember_me:    true
-                #failure_handler: app.user.ajax_handler
-                #success_handler: app.user.ajax_handler
+                #failure_handler: sf.user.ajax_handler
+                #success_handler: sf.user.ajax_handler
 
             logout:
                 path:   /logout
@@ -76,7 +76,7 @@ security:
             anonymous:  true
             
     access_control:
-        - { path: ^%app.web_assets_dir%/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^%sf.web_assets_dir%/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
