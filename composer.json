@@ -1,0 +1,124 @@
+{
+    "name": "symforce/sandbox",
+    "license": "MIT",
+    "type": "project",
+    "description": "The Symforce Sandbox" ,
+    "autoload": {
+        "psr-0": {
+            "AppAdminCache": "app/Resources/AppAdminBundle/src/" ,
+            "": "src/"
+        }
+    },
+   "repositories": [
+      {
+        "type": "composer",
+        "url": "http://pkg.lia"
+      },
+     {
+       "type":"package",
+       "package": {
+         "name": "symforce/admin",
+         "version":"master",
+         "source": {
+           "url": "git@li.gmc.my:symforce-admin.git",
+           "type": "git",
+           "reference":"master"
+         }
+       }
+     },
+     {
+       "type":"package",
+       "package": {
+         "name": "symforce/user",
+         "version":"master",
+         "source": {
+           "url": "git@li.gmc.my:symforce-user.git",
+           "type": "git",
+           "reference":"master"
+         }
+       }
+     },
+     {
+       "type":"package",
+       "package": {
+         "name": "symforce/page",
+         "version":"master",
+         "source": {
+           "url": "git@li.gmc.my:symforce-page.git",
+           "type": "git",
+           "reference":"master"
+         }
+       }
+     },
+      {
+        "packagist": false
+      }
+    ],
+    "require": {
+      "php": ">=5.4.0",
+      "symfony/symfony": "v2.7.1",
+      "doctrine/orm": "v2.4.7",
+      "doctrine/dbal": "v2.4.4",
+      "doctrine/doctrine-bundle": "v1.5.0",
+      "symfony/assetic-bundle": "v2.6.1",
+      "symfony/swiftmailer-bundle": "v2.3.8",
+      "symfony/monolog-bundle": "v2.7.1",
+      "sensio/distribution-bundle": "v4.0.0",
+      "sensio/framework-extra-bundle": "v3.0.9",
+      "incenteev/composer-parameter-handler": "v2.1.1",
+      "symfony-cmf/routing": "1.3.0",
+      "symfony-cmf/routing-bundle": "1.3.5",
+      "doctrine/doctrine-fixtures-bundle": "v2.2.0",
+
+      "symforce/admin":"master",
+      "symforce/user":"master",
+      "symforce/page":"master",
+
+      "jms/cg": "1.0.0",
+      "jms/serializer-bundle": "1.0.0",
+      "stof/doctrine-extensions-bundle": "v1.1.0",
+      "mopa/bootstrap-bundle": "v3.0.0-RC1",
+      "knplabs/knp-menu": "v2.0.1",
+      "knplabs/knp-menu-bundle": "v2.0.0",
+      "knplabs/knp-paginator-bundle": "2.4.2",
+      "leafo/lessphp": "v0.5.0",
+      "gregwar/captcha-bundle": "v1.1",
+      "imagine/imagine": "0.6.2",
+
+      "friendsofsymfony/user-bundle": "dev-master",
+      "friendsofsymfony/message-bundle": "v1.2.2",
+      "sensio/generator-bundle": "v2.5.3"
+    },
+    "require-dev" : {
+        "jns/xhprof-bundle": "dev-master",
+        "facebook/xhprof": "dev-master"
+    } ,
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "App\\AdminBundle\\DependencyInjection\\Composer\\Script::Install"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "App\\AdminBundle\\DependencyInjection\\Composer\\Script::Install"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        }
+    }
+}

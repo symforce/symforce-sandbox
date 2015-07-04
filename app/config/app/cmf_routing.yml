@@ -1,0 +1,5 @@
+
+cmf_routing:
+    dynamic:
+        enabled: true
+        route_provider_service_id: app_routing.route_provider
