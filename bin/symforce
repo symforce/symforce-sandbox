@@ -10,7 +10,7 @@
 		'group::' ,
 		'admin' ,
         'assetic' ,
-		'version' ,
+		'verbose' ,
 	);
 	$options = getopt('e:u::g::x::v::a', $longopts);
 	$getarg	= function($s, $l, $v = null, $match = null , $error = null ) use($options) {
@@ -25,78 +25,81 @@
                 }
 		return $v ;
 	};
-        $web_user   = null ;
-        $web_group  = null ;
-        $read_user_group   = function( & $var , $match ) use ( $dir ){
-             if( null !== $var ) return ;
-             $files = array( $dir . '/app/config/parameters.yml' , $dir . '/app/config/parameters.yml.dist' ) ;
-             foreach($files as $file ) {
-                 if( file_exists($file) ) {
-                    $data  = file_get_contents($file) ;
-                    preg_match('/sf\.web_' . $match . ':\s*(.+)\s/', $data, $ls);
-                    if( $ls && isset($ls[1]) ) {
-                        $var    =  $ls[1] ;
-                        break ;
-                    }
-                 } 
+    $web_user   = null ;
+    $web_group  = null ;
+    $web_assets_dir = null ;
+    $read_user_group   = function( & $var , $match ) use ( $dir ){
+         if( null !== $var ) return ;
+         $files = array( $dir . '/app/config/parameters.yml' , $dir . '/app/config/parameters.yml.dist' ) ;
+         foreach($files as $file ) {
+             if( file_exists($file) ) {
+                $data  = file_get_contents($file) ;
+                preg_match('/sf\.web_' . $match . ':\s*(.+)\s/', $data, $ls);
+                if( $ls && isset($ls[1]) ) {
+                    $var    =  $ls[1] ;
+                    break ;
+                }
              }
-        };
-        $read_user_group( $web_user , 'user' );
-        $read_user_group( $web_group , 'group' );
-        if( !$web_user ) $web_user  = 'www-data' ;
-        if( !$web_group ) $web_group  = 'www-data' ;
+         }
+    };
+    $read_user_group( $web_user , 'user' );
+    $read_user_group( $web_group , 'group' );
+    $read_user_group( $web_assets_dir , 'assets_dir' );
+    if( !$web_user ) $web_user  = 'www-data' ;
+    if( !$web_group ) $web_group  = 'www-data' ;
+    if( !$web_assets_dir ) $web_assets_dir  = '/assets' ;
         
 	$env	= $getarg('e', 'env', 'dev', '/^(prod|dev|test)$/',  'env:`%s` must be one of (dev, prod, test)' );
 	$user   = $getarg('u', 'user', $web_user , '/^[\w\-\_]+$/',  'user:`%s` is valid' );
 	$group	= $getarg('g', 'group', $web_group, '/^[\w\-\_]+$/',  'group:`%s` is valid');
 	$app	= $getarg('x', 'admin' );
-        $assetic = $getarg('a', 'assetic' ) ;
-	$ver	= $getarg('v', 'version' );
-        $is_dev = 'dev' === $env ;
+    $assetic    = $getarg('a', 'assetic' ) ;
+	$verbose    = $getarg('v', 'verbose' ) ? '-v': '' ;
+
+    $is_dev = 'dev' === $env ;
         
-        $exec   = function($cmd){
+    $exec   = function($cmd){
             echo ">>>: ", $cmd, "\n" ;
             passthru($cmd) ;
-        };
+    };
         
 	$exec("rm -rf app/cache/$env/profiler");
 	
-        if( $ver || !$is_dev ) {
-            $file   = $dir . '/app/config/parameters.yml' ;
-            if( file_exists($file) ) {
-                $data  = file_get_contents($file) ;
-                $_data  = preg_replace_callback('/(\s+app\.version\s*\:).*/', function($ms){
-                    return $ms[1] . date(' YmdHis') ;
-                } , $data) ;
-                file_put_contents($file, $_data); 
-            }
-            $exec("rm -rf app/cache/$env/*.* app/cache/$env/assetic") ;
+    if( $assetic || !$is_dev ) {
+        $file   = $dir . '/app/config/parameters.yml' ;
+        if( file_exists($file) ) {
+            $data  = file_get_contents($file) ;
+            $_data  = preg_replace_callback('/(\s+app\.version\s*\:).*/', function($ms){
+                return $ms[1] . date(' YmdHis') ;
+            } , $data) ;
+            file_put_contents($file, $_data);
         }
-        
-        if( !$is_dev ) {
-            $exec("rm -rf app/cache/$env/annotations app/cache/$env/assetic app/cache/$env/doctrine app/cache/$env/profiler app/cache/$env/translations app/cache/$env/twig") ;
-            $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminBundle/src/SymforceAdminCache/*") ;
-        }
-        
-        if( $assetic || !$is_dev ) {
-            $exec("rm -rf web/bundles/js/public*.js web/bundles/css/public*.css");
-        }
-        
-        if( $app || !$is_dev ) {
-            $exec("rm -rf app/cache/$env/AppLoader*") ;
-            $exec("./app/console app:admin:generate -v");
-	}
-        
-        if( !$is_dev ) {
-            $exec("./app/console route:debug -v") ;
-            $exec("./app/console cache:warmup --env=$env -v");
-        
-            $exec("./app/console assets:install --symlink web -v");
-            $exec("./app/console assetic:dump --env=$env --no-debug -v");
-        }
-        
-	$exec("chown -R $user:$group app/ bin/ src/ web/ composer.*");
+        $exec("rm -rf app/cache/$env/*.* app/cache/$env/assetic") ;
+    }
 
-        // composer.phar update --dev --prefer-dist -vvv
-        // composer.phar dumpautoload -o
-        // ./app/console app:dump --watch --no-dump-main --force -vvv
+    if( !$is_dev ) {
+        $exec("rm -rf app/cache/$env/annotations app/cache/$env/doctrine app/cache/$env/profiler app/cache/$env/translations app/cache/$env/twig") ;
+        $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminCache/*") ;
+    }
+
+    if( $assetic || !$is_dev ) {
+        $exec("rm -rf web{$web_assets_dir}");
+    }
+
+    if( $app || !$is_dev ) {
+        $exec("rm -rf app/cache/$env/SymforceLoader*") ;
+	}
+
+    if( !$is_dev ) {
+        $exec("./app/console debug:router --env=$env " . $verbose) ;
+        $exec("./app/console cache:warmup --env=$env " . $verbose);
+        $exec("./app/console assetic:dump --env=$env --no-debug " . $verbose);
+    }
+
+    $exec("./app/console sf:admin:setup --env=$env " . $verbose);
+
+    $exec("chown -R $user:$group app/ bin/ src/ web/ composer.*");
+
+    // composer.phar update --dev --prefer-dist -vvv
+    // composer.phar dumpautoload -o
+    // ./app/console sf:admin:dump --watch --no-dump-main --force -vvv
