@@ -1,4 +1,4 @@
-app_group:
+group:
     label: User Group
     form:
         roles:
@@ -9,7 +9,7 @@ app_group:
             label: Default Group
         trust_group:
             label: Trust Group
-app_user:
+user:
     label: User
     form:
         username:
@@ -36,7 +36,7 @@ app_user:
         mobile_phone_number:
             label: Mobile phone number
             
-app_user_log:
+user_log:
     label: User Logs
     form:
         type:

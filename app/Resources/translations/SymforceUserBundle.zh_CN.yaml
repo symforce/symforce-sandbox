@@ -1,4 +1,4 @@
-app_user:
+user:
     label: 用户
     form:
         username:
@@ -38,14 +38,14 @@ app_user:
     resetting:
         title: 找回密码
         
-app_user_log:
+user_log:
     label: 用户日志
     form:
         type:
             choice:
                 reg: 注册
                 confirm: 激活
-app_group:
+group:
     label: 用户组
     form:
         roles:

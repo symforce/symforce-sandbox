@@ -1,4 +1,4 @@
-app:
+sf:
     admin:
         dashboard: 管理面板
         
@@ -150,5 +150,5 @@ app:
         label: 所有
         list: 所有%admin%
         
-app_page:
+page:
     label: 页面

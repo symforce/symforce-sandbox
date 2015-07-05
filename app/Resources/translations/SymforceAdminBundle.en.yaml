@@ -1,4 +1,4 @@
-app:
+sf:
     admin:
         dashboard: DashBoard
     
@@ -143,5 +143,5 @@ app:
             label: Type
         user_group:
             label: User Group
-app_page:
+page:
     label: Page
