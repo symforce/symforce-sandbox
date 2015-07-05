@@ -1,9 +1,9 @@
 
 parameters:
     mopa_bootstrap.form.templating: "SymforceAdminBundle:Form:fields.html.twig"
-    sf_routing.default_template: "AppWebBundle::page_entity.html.twig"
+    sf_routing.default_template: "SymforceAdminBundle::page_entity.html.twig"
 
-sf_admin:
+symforce_admin:
     language:
         en: English
         zh_CN: 简体中文

@@ -7,11 +7,11 @@
 /app/logs/
 /app/config/parameters.yml
 /app/Resources/java/
-/app/Resources/SymforceAdminBundle/src/AppAdminCache/
+/app/Resources/SymforceAdminCache/
 /app/Resources/SymforceAdminBundle/translations/*.yaml
 /app/Resources/views/
-/app/upload/
 /bin/doctrine
+/bin/security-checker
 /vendor/
 /web/assets/
 /web/dev.php

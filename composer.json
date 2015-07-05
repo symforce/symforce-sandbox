@@ -5,10 +5,12 @@
     "description": "The Symforce Sandbox" ,
     "autoload": {
         "psr-0": {
-           "SymforceAdminCache": "app/Resources/SymforceAdminBundle/src/" ,
-           "Symforce\\AdminBundle\\": "vendor/symforce/admin-bundle" ,
-           "Symforce\\UserBundle\\": "vendor/symforce/user-bundle" ,
             "": "src/"
+        },
+        "psr-4": {
+          "SymforceAdminCache": "app/Resources/SymforceAdminCache" ,
+          "Symforce\\AdminBundle\\": "vendor/symforce/admin-bundle" ,
+          "Symforce\\UserBundle\\": "vendor/symforce/user-bundle"
         }
     },
    "repositories": [
