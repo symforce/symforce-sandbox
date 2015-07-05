@@ -8,7 +8,7 @@
             "": "src/"
         },
         "psr-4": {
-          "SymforceAdminCache\\": "app/Resources/SymforceAdminCache" ,
+          "Symforce\\AdminCache\\": "app/Resources/SymforceAdminCache" ,
           "Symforce\\AdminBundle\\": "vendor/symforce/admin-bundle" ,
           "Symforce\\UserBundle\\": "vendor/symforce/user-bundle"
         }

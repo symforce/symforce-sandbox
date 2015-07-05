@@ -14,5 +14,6 @@
 /bin/security-checker
 /vendor/
 /web/assets/
+/web/bundles/
 /web/dev.php
 *~
