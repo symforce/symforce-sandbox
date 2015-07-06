@@ -8,10 +8,12 @@
 /app/config/parameters.yml
 /app/Resources/java/
 /app/Resources/SymforceAdminCache/
+/app/Resources/SymforceAnnotation/
 /app/Resources/SymforceAdminBundle/translations/*.yaml
 /app/Resources/views/
 /bin/doctrine
 /bin/security-checker
+/symforce/
 /vendor/
 /web/assets/
 /web/bundles/

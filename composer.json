@@ -9,8 +9,15 @@
         },
         "psr-4": {
           "Symforce\\AdminCache\\": "app/Resources/SymforceAdminCache" ,
-          "Symforce\\AdminBundle\\": "vendor/symforce/admin-bundle" ,
-          "Symforce\\UserBundle\\": "vendor/symforce/user-bundle"
+          "Symforce\\Annotation\\": "app/Resources/SymforceAnnotation" ,
+          "Symforce\\AdminBundle\\": "symforce/admin-bundle" ,
+          "Symforce\\StorageBundle\\": "symforce/storage-bundle" ,
+          "Symforce\\UserBundle\\": "symforce/user-bundle" ,
+          "Symforce\\WorkflowBundle\\": "symforce/workflow-bundle" ,
+          "Symforce\\MenuBundle\\": "symforce/menu-bundle" ,
+          "Symforce\\PageBundle\\": "symforce/page-bundle" ,
+          "Symforce\\NewsBundle\\": "symforce/news-bundle" ,
+          "Symforce\\DiscuzBundle\\": "symforce/discuz-bundle"
         }
     },
    "repositories": [
