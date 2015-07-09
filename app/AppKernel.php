@@ -34,7 +34,8 @@ class AppKernel extends Kernel
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle() ,
-			
+
+            new Symforce\CoreBundle\SymforceCoreBundle() ,
             new Symforce\UserBundle\SymforceUserBundle() ,
             new Symforce\AdminBundle\SymforceAdminBundle() , 
 			

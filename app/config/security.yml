@@ -53,12 +53,12 @@ security:
                 target: sf_admin_dashboard
 
         main:
-            pattern: ^%sf.web_root_dir%/
+            pattern: ^%sf.web_base_dir%/
             form_login:
                 provider:       fos_userbundle
-                login_path:     %sf.web_root_dir%/login
+                login_path:     %sf.web_base_dir%/login
                 use_forward:    false
-                check_path:     %sf.web_root_dir%/login_check
+                check_path:     %sf.web_base_dir%/login_check
                 # success_handler: ccdn_user_security.component.authentication.handler.login_success_handler
                 username_parameter: login[username]
                 password_parameter: login[password]
@@ -70,17 +70,17 @@ security:
                 #success_handler: sf.user.ajax_handler
 
             logout:
-                path:   %sf.web_root_dir%/logout
-                target: %sf.web_root_dir%
+                path:   %sf.web_base_dir%/logout
+                target: %sf.web_base_dir%
                 # success_handler: ccdn_user_security.component.authentication.handler.logout_success_handler
             anonymous:  true
             
     access_control:
         - { path: ^%sf.web_assets_dir%/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
-        - { path: ^%sf.web_root_dir%/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^%sf.web_root_dir%/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^%sf.web_root_dir%/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^%sf.web_base_dir%/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^%sf.web_base_dir%/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^%sf.web_base_dir%/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         
         - { path: ^%sf.web_admin_dir%/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^%sf.web_admin_dir%/, role: ROLE_ADMIN }

@@ -27,14 +27,15 @@ parameters:
     web_profiler.use_toolbar:          false
     web_profiler.use_redirects:        false
 
-    sf.web_user:  git
-    sf.web_group: git
-
     sf.brand: Brand
     sf.version: 0
-    sf.web_root_dir: ""
-    sf.web_assets_dir: %sf.web_root_dir%/assets
-    sf.web_admin_dir: %sf.web_root_dir%/admin
+
+    sf.web_user:  git
+    sf.web_group: git
+    sf.web_root_dir: %kernel.root_dir%/../web
+    sf.web_base_dir: ""
+    sf.web_assets_dir: %sf.web_base_dir%/assets
+    sf.web_admin_dir: %sf.web_base_dir%/admin
     sf.web_domain: localhost:8000
     sf.web_host: http://%sf.web_domain%
 

@@ -37,8 +37,8 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: %assetic.use_controller%
-    read_from:      %kernel.root_dir%/../web%sf.web_assets_dir%
-    write_to:       %kernel.root_dir%/../web%sf.web_assets_dir%
+    read_from:      %sf.web_root_dir%/%sf.web_assets_dir%
+    write_to:       %sf.web_root_dir%/%sf.web_assets_dir%
     bundles:        %assetic.bundles%
     java: %assetic.java_path%
     filters:
