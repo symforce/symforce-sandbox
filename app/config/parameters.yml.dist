@@ -35,6 +35,7 @@ parameters:
     sf.web_root_dir: %kernel.root_dir%/../web
     sf.web_base_dir: ""
     sf.web_assets_dir: %sf.web_base_dir%/assets
+    sf.web_assets_target_dirs: [ "css", "fonts", "img", "images" ]
     sf.web_admin_dir: %sf.web_base_dir%/admin
     sf.web_domain: localhost:8000
     sf.web_host: http://%sf.web_domain%

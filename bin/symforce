@@ -96,10 +96,10 @@
         $exec("./app/console assetic:dump --env=$env --no-debug " . $verbose);
     }
 
-    $exec("./app/console sf:admin:setup --env=$env " . $verbose);
+    $exec("./app/console sf:core:assets --env=$env " . $verbose);
 
     $exec("chown -R $user:$group app/ bin/ src/ web/ composer.*");
 
     // composer.phar update --dev --prefer-dist -vvv
     // composer.phar dumpautoload -o
-    // ./app/console sf:admin:dump --watch --no-dump-main --force -vvv
+    // ./app/console sf:core:dump --watch --force -vvv
