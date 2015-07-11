@@ -79,7 +79,7 @@
 
     if( !$is_dev ) {
         $exec("rm -rf app/cache/$env/annotations app/cache/$env/doctrine app/cache/$env/profiler app/cache/$env/translations app/cache/$env/twig") ;
-        $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminCache/*") ;
+        $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminCache/* app/Resources/SymforceAnnotation/* app/Resources/SymforceEvent/* ") ;
     }
 
     if( $assetic || !$is_dev ) {

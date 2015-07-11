@@ -10,6 +10,7 @@
         "psr-4": {
           "Symforce\\AdminCache\\": "app/Resources/SymforceAdminCache" ,
           "Symforce\\Annotation\\": "app/Resources/SymforceAnnotation" ,
+          "Symforce\\Event\\": "app/Resources/SymforceEvent" ,
           "Symforce\\CoreBundle\\": "symforce/core-bundle" ,
           "Symforce\\AdminBundle\\": "symforce/admin-bundle" ,
           "Symforce\\StorageBundle\\": "symforce/storage-bundle" ,
