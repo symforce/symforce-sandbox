@@ -1,14 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-	$dir	= dirname(__DIR__);
-	chdir( $dir );
+	$project_dir	= dirname(__DIR__);
+	chdir( $project_dir );
         
 	$longopts  = array(
 		'env:' ,
 		'user::' , 
 		'group::' ,
-		'admin' ,
+		'cache' ,
         'assetic' ,
 		'verbose' ,
 	);
@@ -28,31 +28,43 @@
     $web_user   = null ;
     $web_group  = null ;
     $web_assets_dir = null ;
-    $read_user_group   = function( & $var , $match ) use ( $dir ){
+    $web_root_dir = null ;
+    $read_web_parameter  = function( & $var , $match ) use ( $project_dir ){
          if( null !== $var ) return ;
-         $files = array( $dir . '/app/config/parameters.yml' , $dir . '/app/config/parameters.yml.dist' ) ;
+         $files = array( $project_dir . '/app/config/parameters.yml' , $project_dir . '/app/config/parameters.yml.dist' ) ;
          foreach($files as $file ) {
              if( file_exists($file) ) {
                 $data  = file_get_contents($file) ;
                 preg_match('/sf\.web_' . $match . ':\s*(.+)\s/', $data, $ls);
                 if( $ls && isset($ls[1]) ) {
                     $var    =  $ls[1] ;
+                    if( preg_match('/^\'(.+)\'$/', $var, $_ls) ) {
+                        $var = $_ls[1] ;
+                    } else if( preg_match('/^\"(.+)\"$/', $var, $_ls) ) {
+                        $var = $_ls[1] ;
+                    }
                     break ;
                 }
              }
          }
     };
-    $read_user_group( $web_user , 'user' );
-    $read_user_group( $web_group , 'group' );
-    $read_user_group( $web_assets_dir , 'assets_dir' );
+    $read_web_parameter( $web_user , 'user' );
+    $read_web_parameter( $web_group , 'group' );
+    $read_web_parameter( $web_assets_dir , 'assets_dir' );
+    $read_web_parameter( $web_root_dir , 'root_dir' );
     if( !$web_user ) $web_user  = 'www-data' ;
     if( !$web_group ) $web_group  = 'www-data' ;
     if( !$web_assets_dir ) $web_assets_dir  = '/assets' ;
-        
+    if( !$web_root_dir ) {
+        $web_root_dir  =  'www' ;
+    } else {
+        $web_root_dir  = str_replace('%kernel.root_dir%/../',  '' , $web_root_dir) ;
+    }
+
 	$env	= $getarg('e', 'env', 'dev', '/^(prod|dev|test)$/',  'env:`%s` must be one of (dev, prod, test)' );
 	$user   = $getarg('u', 'user', $web_user , '/^[\w\-\_]+$/',  'user:`%s` is valid' );
 	$group	= $getarg('g', 'group', $web_group, '/^[\w\-\_]+$/',  'group:`%s` is valid');
-	$app	= $getarg('x', 'admin' );
+	$cache	= $getarg('x', 'cache' );
     $assetic    = $getarg('a', 'assetic' ) ;
 	$verbose    = $getarg('v', 'verbose' ) ? '-v': '' ;
 
@@ -66,29 +78,23 @@
 	$exec("rm -rf app/cache/$env/profiler");
 	
     if( $assetic || !$is_dev ) {
-        $file   = $dir . '/app/config/parameters.yml' ;
-        if( file_exists($file) ) {
-            $data  = file_get_contents($file) ;
-            $_data  = preg_replace_callback('/(\s+app\.version\s*\:).*/', function($ms){
+        $parameters_file   = $project_dir . '/app/config/parameters.yml' ;
+        if( file_exists($parameters_file) ) {
+            $parameters_data  = file_get_contents($parameters_file) ;
+            $_parameters_data  = preg_replace_callback('/(\s+app\.version\s*\:).*/', function($ms){
                 return $ms[1] . date(' YmdHis') ;
-            } , $data) ;
-            file_put_contents($file, $_data);
+            } , $parameters_data) ;
+            file_put_contents($parameters_file, $_parameters_data);
         }
         $exec("rm -rf app/cache/$env/*.* app/cache/$env/assetic") ;
+        $exec("rm -rf {$web_root_dir}{$web_assets_dir} {$web_root_dir}/bundles");
     }
 
-    if( !$is_dev ) {
+    if( !$is_dev || $cache ) {
         $exec("rm -rf app/cache/$env/annotations app/cache/$env/doctrine app/cache/$env/profiler app/cache/$env/translations app/cache/$env/twig") ;
-        $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminCache/* app/Resources/SymforceAnnotation/* app/Resources/SymforceEvent/* ") ;
-    }
-
-    if( $assetic || !$is_dev ) {
-        $exec("rm -rf web{$web_assets_dir}");
-    }
-
-    if( $app || !$is_dev ) {
         $exec("rm -rf app/cache/$env/SymforceLoader*") ;
-	}
+        $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminCache/* app/Resources/SymforceAnnotation/* app/Resources/SymforceEvent/*") ;
+    }
 
     if( !$is_dev ) {
         $exec("./app/console debug:router --env=$env " . $verbose) ;
@@ -98,7 +104,7 @@
 
     $exec("./app/console sf:core:assets --env=$env " . $verbose);
 
-    $exec("chown -R $user:$group app/ bin/ src/ web/ composer.*");
+    $exec("chown -R $user:$group app/ bin/ src/ {$web_root_dir}/ composer.*");
 
     // composer.phar update --dev --prefer-dist -vvv
     // composer.phar dumpautoload -o
