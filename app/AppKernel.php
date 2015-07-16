@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new FOS\MessageBundle\FOSMessageBundle(),
+            // new FOS\MessageBundle\FOSMessageBundle(),
             
             // new FOS\RestBundle\FOSRestBundle(),
             // new FOS\CommentBundle\FOSCommentBundle(),
@@ -33,11 +33,11 @@ class AppKernel extends Kernel
             new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle() ,
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new FOS\UserBundle\FOSUserBundle() ,
+            // new FOS\UserBundle\FOSUserBundle() ,
 
             new Symforce\CoreBundle\SymforceCoreBundle() ,
-            new Symforce\UserBundle\SymforceUserBundle() ,
-            new Symforce\AdminBundle\SymforceAdminBundle() , 
+            new Symforce\AdminBundle\SymforceAdminBundle() ,
+            //new Symforce\UserBundle\SymforceUserBundle() ,
 			
         );
         

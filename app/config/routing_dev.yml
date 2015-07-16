@@ -19,9 +19,9 @@ _assetic:
     type: assetic
     prefix: '%sf.web_assets_dir%'
 
-_sf_fos_message:
-    resource: "@FOSMessageBundle/Resources/config/routing.xml"
-    prefix: /message
+#_sf_fos_message:
+#    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+#    prefix: /message
 
 _main:
     resource: routing.yml

@@ -1,13 +1,12 @@
 imports:
     - { resource: admin.yml }
-    - { resource: ../fos/fos_user.yml }
-    - { resource: ../fos/fos_message.yml }
     - { resource: ../knp/knp_paginator.yml }
-    - { resource: ../cmf/cmf_routing.yml }
-    - { resource: stof.yml }
-    - { resource: routing.yml }
-    - { resource: mopa.yml }
+    # - { resource: ../fos/fos_user.yml }
+    # - { resource: ../fos/fos_message.yml }
     # - { resource: ../fos/fos_comment.yml }
+    # - { resource: ../cmf/cmf_routing.yml }
+    - { resource: stof.yml }
+    - { resource: mopa.yml }
     # - { resource: jms_di.yml }
     
 parameters:
