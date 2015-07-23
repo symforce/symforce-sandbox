@@ -24,16 +24,28 @@
     },
    "repositories": [
      {
+       "type": "package",
+       "package": {
+         "name": "imagine/imagine",
+         "version": "dev-master",
+         "dist": {
+           "type": "zip",
+           "url": "http://li.gmc.my/imagine.zip",
+           "reference": "0.6.2"
+         }
+       }
+     },
+     {
        "type": "composer",
-       "url": "http://pkg.lia"
+       "url": "http://pkg.yst.at"
      },
       {
         "packagist": false
       }
     ],
     "require": {
-      "php": ">=5.4.0",
-      "symfony/symfony": "v2.7.1",
+      "php": ">=5.5.0",
+      "symfony/symfony": "2.8.x-dev",
       "doctrine/orm": "v2.4.7",
       "doctrine/dbal": "v2.4.4",
       "doctrine/doctrine-bundle": "v1.5.0",
@@ -45,9 +57,7 @@
       "incenteev/composer-parameter-handler": "v2.1.1",
       "symfony-cmf/routing": "1.3.0",
       "symfony-cmf/routing-bundle": "1.3.5",
-      "doctrine/doctrine-fixtures-bundle": "v2.2.0",
       "jms/cg": "1.0.0",
-      "jms/serializer-bundle": "1.0.0",
       "stof/doctrine-extensions-bundle": "v1.1.0",
       "mopa/bootstrap-bundle": "v3.0.0-RC1",
       "knplabs/knp-menu": "v2.0.1",
@@ -55,9 +65,8 @@
       "knplabs/knp-paginator-bundle": "2.4.2",
       "leafo/lessphp": "v0.5.0",
       "gregwar/captcha-bundle": "v1.1",
-      "imagine/imagine": "0.6.2",
+      "imagine/imagine": "dev-master",
       "friendsofsymfony/user-bundle": "dev-master",
-      "friendsofsymfony/message-bundle": "v1.2.2",
       "sensio/generator-bundle": "v2.5.3"
     },
     "scripts": {
