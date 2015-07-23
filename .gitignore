@@ -7,9 +7,7 @@
 /app/logs/
 /app/config/parameters.yml
 /app/Resources/java/
-/app/Resources/SymforceAdminCache/
-/app/Resources/SymforceAnnotation/
-/app/Resources/SymforceEvent/
+/app/Resources/Symforce/
 /app/Resources/SymforceAdminBundle/translations/*.yaml
 /app/Resources/views/
 /bin/doctrine

@@ -93,7 +93,7 @@
     if( !$is_dev || $cache ) {
         $exec("rm -rf app/cache/$env/annotations app/cache/$env/doctrine app/cache/$env/profiler app/cache/$env/translations app/cache/$env/twig") ;
         $exec("rm -rf app/cache/$env/SymforceLoader*") ;
-        $exec("rm -rf app/Resources/views/* app/Resources/SymforceAdminCache/* app/Resources/SymforceAnnotation/* app/Resources/SymforceEvent/*") ;
+        $exec("rm -rf app/Resources/views/* app/Resources/Symforce/*/* app/Resources/SymforceAdminBundle/translations/*.yaml") ;
     }
 
     if( !$is_dev ) {

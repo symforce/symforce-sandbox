@@ -8,9 +8,6 @@
             "": "src/"
         },
         "psr-4": {
-          "Symforce\\AdminCache\\": "app/Resources/SymforceAdminCache" ,
-          "Symforce\\Annotation\\": "app/Resources/SymforceAnnotation" ,
-          "Symforce\\Event\\": "app/Resources/SymforceEvent" ,
           "Symforce\\CoreBundle\\": "symforce/core-bundle" ,
           "Symforce\\AdminBundle\\": "symforce/admin-bundle" ,
           "Symforce\\StorageBundle\\": "symforce/storage-bundle" ,
@@ -19,7 +16,10 @@
           "Symforce\\MenuBundle\\": "symforce/menu-bundle" ,
           "Symforce\\PageBundle\\": "symforce/page-bundle" ,
           "Symforce\\NewsBundle\\": "symforce/news-bundle" ,
-          "Symforce\\DiscuzBundle\\": "symforce/discuz-bundle"
+          "Symforce\\DiscuzBundle\\": "symforce/discuz-bundle",
+          "Symforce\\Admin\\": "app/Resources/Symforce/Admin",
+          "Symforce\\Annotation\\": "app/Resources/Symforce/Annotation",
+          "Symforce\\Event\\": "app/Resources/Symforce/Event"
         }
     },
    "repositories": [
