@@ -1,6 +1,6 @@
 
-_sf_user_fos:
-    resource: "@SymforceUserBundle/Resources/config/routing/fos.yml"
+#_sf_user_fos:
+#    resource: "@SymforceUserBundle/Resources/config/routing/fos.yml"
     
 #_sf_group_fos:
 #    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
