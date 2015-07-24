@@ -12,6 +12,7 @@
 /app/Resources/views/
 /bin/doctrine
 /bin/security-checker
+/src/Dev.php
 /symforce/
 /vendor/
 /web/assets/
