@@ -19,6 +19,8 @@
           "Symforce\\DiscuzBundle\\": "symforce/discuz-bundle",
           "Symforce\\Admin\\": "app/Resources/Symforce/Admin",
           "Symforce\\Annotation\\": "app/Resources/Symforce/Annotation",
+          "Symforce\\Builder\\": "app/Resources/Symforce/Builder",
+          "Symforce\\Cache\\": "app/Resources/Symforce/Cache",
           "Symforce\\Event\\": "app/Resources/Symforce/Event"
         }
     },
